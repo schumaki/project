@@ -63,7 +63,3 @@ inflation %>%
   NULL
 ```
 
-```{python}
-print("Hello World! Python here, do you miss R already?")
-```
-
