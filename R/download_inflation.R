@@ -9,7 +9,8 @@ fs::dir_create(fs::path_dir(inflation_raw_path))
 # Function to attempt Google Drive download
 download_from_google <- function() {
   download.file(
-    "https://drive.google.com/uc?id=1irXtt_1vgDuIBmj4t5LpReEutpIDv4z4&export=download",
+    #"https://drive.google.com/uc?id=1irXtt_1vgDuIBmj4t5LpReEutpIDv4z4&export=download",
+    "https://drive.google.com/uc?id=1Qwv4EtBxVxoeFZZS-K4KEL-DUj_9F4pc&export=download",
     fs::path_ext_set(inflation_raw_path, "rds")
   )
 }
@@ -17,7 +18,7 @@ download_from_google <- function() {
 # Function to attempt Bank of England download and then process it
 download_from_bank_of_england <- function() {
   system(paste("curl -o", inflation_raw_path, "https://www.bankofengland.co.uk/-/media/boe/files/inflation-attitudes-survey/individual-responses-xlsx.xlsx"))
-  inflation_raw <- readxl::read_excel(here("data", "raw", "inflation.xlsx"), sheet = 4)
+  inflation_raw <- readxl::read_excel(here("data", "raw", "inflation.xlsx"), sheet = 4, guess_max = 1048576)
   readr::write_rds(inflation_raw, fs::path_ext_set(inflation_raw_path, "rds"), compress = "gz")
 }
 
