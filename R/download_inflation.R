@@ -22,8 +22,8 @@ download_from_bank_of_england <- function() {
 }
 
 # Use tryCatch to first attempt Google Drive download and if that fails, attempt Bank of England download (The source)
-tryCatch({
-  download_from_google()
-}, error = function(e) {
+#tryCatch({
+#  download_from_google()
+#}, error = function(e) {
   download_from_bank_of_england()
-})
+#})
